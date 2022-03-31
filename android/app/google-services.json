@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "136829215583",
+    "project_id": "cityclean-e2e05",
+    "storage_bucket": "cityclean-e2e05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136829215583:android:6e5c03d3a379321d160cea",
+        "android_client_info": {
+          "package_name": "com.example.cleancityapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136829215583-4n6e54prjh1l73872luhl6p1pkkqda6j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cleancityapp2",
+            "certificate_hash": "a3a62bfe5b34e04b23638624007a8392d66d3033"
+          }
+        },
+        {
+          "client_id": "136829215583-scbjoo189ab0vhfed5q3994if7ua0f6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC92PYoqeiu4ezzc3KCKon4_CDHoz-ayXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136829215583-scbjoo189ab0vhfed5q3994if7ua0f6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
