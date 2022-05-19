@@ -25,14 +25,14 @@ class _RegisterUserState extends State<RegisterUser> {
   TextEditingController lnamecontrol = TextEditingController();
 
 
-  Future<List> getData2() async {
-    final responce =
-        await http.get(Uri.parse("https://mychoir2.000webhostapp.com/cityClean/getPositions.php"));
-    return json.decode(responce.body);
-  }
+  // Future<List> getData2() async {
+  //   final responce =
+  //       await http.get(Uri.parse("https://mychoir2.000webhostapp.com/cityClean/getPositions.php"));
+  //   return json.decode(responce.body);
+  // }
   //inserting  to mysql
   RegisteUsa() async {
-    var url = 'https://mychoir2.000webhostapp.com/cityClean/registerOccupants.php';
+    var url = 'https://unremembered-disadv.000webhostapp.com/register.php';
 
     http.post(Uri.parse(url), body: {
       "fname": namecontrol.text,
@@ -41,6 +41,19 @@ class _RegisterUserState extends State<RegisterUser> {
       "position": selectedUser,
       "phone": phonecontrol.text,
       "password": lnamecontrol.text,
+
+      //   "fname": namecontrol.text,
+      // "lname": lnamecontrol.text,
+      // "email": emailcontrol.text,
+      // "password": psswdcontrol.text,
+      // "phone": phonecontrol.text,
+      "role": selectedUser,
+      
+      // "latlng": latlngcontrol.text,
+      "street": "none",
+      "resiNo": 'none',
+      "pay": "no",
+      "bool": "false",
    
     });
   }
@@ -105,7 +118,11 @@ class _RegisterUserState extends State<RegisterUser> {
                 TextFormField(
                   // ignore: deprecated_member_use
                   controller: namecontrol,
-                  autovalidate: saveAttempt,
+                  // autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
 
                   validator: (name) {
                     if (name.isEmpty) {
@@ -139,7 +156,10 @@ class _RegisterUserState extends State<RegisterUser> {
                 TextFormField(
                   // ignore: deprecated_member_use
                   controller: lnamecontrol,
-                  autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
 
                   validator: (name) {
                     if (name.isEmpty) {
@@ -172,7 +192,11 @@ class _RegisterUserState extends State<RegisterUser> {
                 TextFormField(
                   controller: emailcontrol,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                  // autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
 
                   validator: (emailValue) {
                     if (emailValue.isEmpty) {
@@ -222,7 +246,9 @@ class _RegisterUserState extends State<RegisterUser> {
                 TextFormField(
                   controller: phonecontrol,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                  // autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  
 
                   maxLength: 10,
                   validator: (phonval) {
@@ -263,14 +289,10 @@ class _RegisterUserState extends State<RegisterUser> {
                 Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-                    child: FutureBuilder<List>(
-                        future: getData2(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return DropdownButton(
+                    child: DropdownButton(
                               
                               dropdownColor: Colors.white,
-                              hint: Text("Position"),
+                              hint: Text("Select position"),
                               value: selectedUser,
                               onChanged: (value) {
                                 setState(() {
@@ -278,26 +300,61 @@ class _RegisterUserState extends State<RegisterUser> {
                                   print(this.selectedUser);
                                 });
                               },
-                              items: snapshot.data.map((winnie) {
+                              items: <String>['manager', 'driver', 'officer'].map((winnie) {
                                 return DropdownMenuItem(
-                                  value: winnie['position'],
+                                  value: winnie,
                                   child: Row(
                                     children: <Widget>[
                                       SizedBox(
                                         width: 10,
                                       ),
                                       Text(
-                                        winnie['position'],
+                                        winnie,
                                         style: TextStyle(color: Colors.black),
                                       ),
                                     ],
                                   ),
                                 );
                               }).toList(),
-                            );
-                          }
-                          return Center(child: CircularProgressIndicator());
-                        })),
+                            ),
+                    
+                    // FutureBuilder<List>(
+                    //     future: null,
+                    //     builder: (context, snapshot) {
+                    //       if (snapshot.hasData) {
+                    //         return DropdownButton(
+                              
+                    //           dropdownColor: Colors.white,
+                    //           hint: Text("Position"),
+                    //           value: selectedUser,
+                    //           onChanged: (value) {
+                    //             setState(() {
+                    //               this.selectedUser = value;
+                    //               print(this.selectedUser);
+                    //             });
+                    //           },
+                    //           items: snapshot.data.map((winnie) {
+                    //             return DropdownMenuItem(
+                    //               value: winnie['position'],
+                    //               child: Row(
+                    //                 children: <Widget>[
+                    //                   SizedBox(
+                    //                     width: 10,
+                    //                   ),
+                    //                   Text(
+                    //                     winnie['position'],
+                    //                     style: TextStyle(color: Colors.black),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             );
+                    //           }).toList(),
+                    //         );
+                    //       }
+                    //       return Center(child: CircularProgressIndicator());
+                    //     })
+                        
+                        ),
                 
                 SizedBox(
                   height: 12.0,

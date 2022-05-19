@@ -23,8 +23,8 @@ class _NotificationsState extends State<PaymentNotifications> {
     final responce = await http.get(Uri.parse(
         "https://mychoir2.000webhostapp.com/cityClean/getNotificationpayments.php"));
 
-    var dat = json.decode(responce.body);
-    return dat;
+    // var dat = json.decode(responce.body);
+    // return dat;
 
     // Showing Alert Dialog with Response JSON Message.
   }

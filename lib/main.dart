@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:cleancityapp2/Modules/manager.dart';
-import 'package:cleancityapp2/Modules/driverDetails.dart';
 import 'package:cleancityapp2/Modules/officer.dart';
 import 'package:cleancityapp2/Modules/user.dart';
 import 'package:cleancityapp2/home.dart';
@@ -10,7 +9,6 @@ import 'package:cleancityapp2/auth/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 

@@ -93,7 +93,8 @@ class _SendServiceNotificationnState extends State<SendServiceNotificationn> {
                 TextFormField(
                   // ignore: deprecated_member_use
                   controller: discription,
-                  autovalidate: saveAttempt,
+                  // autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   validator: (name) {
                     if (name.isEmpty) {

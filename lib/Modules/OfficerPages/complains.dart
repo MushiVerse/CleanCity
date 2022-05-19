@@ -16,8 +16,8 @@ class _NotificationsState extends State<Complains> {
     final responce = await http.get(Uri.parse(
         "https://mychoir2.000webhostapp.com/cityClean/getComments.php"));
 
-    var dat = json.decode(responce.body);
-    return dat;
+    // var dat = json.decode(responce.body);
+    // return dat;
 
     // Showing Alert Dialog with Response JSON Message.
   }
@@ -107,7 +107,8 @@ class _NotificationsState extends State<Complains> {
             return Center(child: CircularProgressIndicator());
           } else {
             return ListView.builder(
-                itemCount: snap.data.length,
+              itemCount: 5,
+                // itemCount: snap.data.length,
                 itemBuilder: (context, i) {
                   return Card(
                     shadowColor: Colors.greenAccent,
@@ -125,7 +126,8 @@ class _NotificationsState extends State<Complains> {
                     )
         ), 
                           Text(
-                            snap.data[i]['fname'],
+                            // snap.data[i]['fname'],
+                            'not connected to DB',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -133,11 +135,15 @@ class _NotificationsState extends State<Complains> {
                             width: 10,
                           ),
                           Text(
-                            snap.data[i]['lname'],
+                            // snap.data[i]['lname'],
+                            'lname'
                           ),
                         ],
                       ),
-                      subtitle: Text(snap.data[i]['email']),
+                      subtitle: Text(
+                        // snap.data[i]['email']
+                        'email'
+                        ),
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -145,7 +151,8 @@ class _NotificationsState extends State<Complains> {
                             Container(
                               width: 300,
                               child: Text(
-                                snap.data[i]['comment'],
+                                // snap.data[i]['comment'],
+                                'tunahitaji huduma bora',
                                 style: TextStyle(
                                   fontSize: 20
                                 ),
@@ -168,7 +175,8 @@ class _NotificationsState extends State<Complains> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              snap.data[i]['time'],
+                              // snap.data[i]['time'],
+                              '14:30',
                               style: TextStyle(color: Colors.green),
                             )
                           ],

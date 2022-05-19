@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 
 class Users extends StatefulWidget {
 
+  Users({this.position, this.fname, this.lname});
+
+  final String fname,lname;
+  final String position;
+
   @override
   _UsersState createState() => _UsersState();
 }
@@ -52,7 +57,7 @@ class _UsersState extends State<Users> {
                 ),
 
                 Text(
-                " $name2 ",
+                 widget.fname,
                 style: TextStyle(
                   fontSize: 23
                 ),

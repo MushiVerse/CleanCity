@@ -15,9 +15,9 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-homepage: https://github.com/mushi2/fast.tz.git
-repository: https://github.com/mushi2/fast.tz.git
-issue_tracker: https://github.com/mushi2/fast.tz.git/issues
+homepage: https://github.com/mushi2/CleanCity.git
+repository: https://github.com/mushi2/CleanCity.git
+issue_tracker: https://github.com/mushi2/CleanCity.git/issues
 version: 1.0.0+1
 
 environment:
@@ -57,14 +57,16 @@ dependencies:
   url_launcher: ^6.0.9
   map_launcher: ^2.1.1
   fl_chart: ^0.36.2
-  charts_flutter: ^0.11.0
+  charts_flutter: ^0.12.0
+  platform: ^3.1.0
 
 
 
   #Gmap
   # geolocator: ^5.0.1
   geocoding: ^2.0.0
-  geolocator: ^7.2.0+1
+  # geolocator: ^7.2.0+1
+  geolocator: ^8.2.1
   dio: ^4.0.0
   flutter_polyline_points: ^1.0.0
   meta: ^1.1.6

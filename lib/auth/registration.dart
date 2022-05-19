@@ -40,14 +40,15 @@ class _RegisrationState extends State<Registration> {
   var selectedUser;
 
   //inserting  to mysql
-  InsertMethod() async {
-    var url = 'https://mychoir2.000webhostapp.com/cityClean/register.php';
+  Future insertMethod() async {
+    var url = 'https://unremembered-disadv.000webhostapp.com/register.php';
     http.post(Uri.parse(url), body: {
       "fname": fnamecontrol.text,
       "lname": lnamecontrol.text,
       "email": emailcontrol.text,
       "password": psswdcontrol.text,
       "phone": phonecontrol.text,
+      "role": "user",
       
       // "latlng": latlngcontrol.text,
       "street": selectedUser,
@@ -169,7 +170,10 @@ class _RegisrationState extends State<Registration> {
                   keyboardType: TextInputType.name,
                   // ignore: deprecated_member_use
                   controller: fnamecontrol,
-                  autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
 
                   validator: (name) {
                     if (name.isEmpty) {
@@ -204,7 +208,10 @@ class _RegisrationState extends State<Registration> {
                   keyboardType: TextInputType.name,
                   // ignore: deprecated_member_use
                   controller: lnamecontrol,
-                  autovalidate: saveAttempt,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   validator: (name) {
                     if (name.isEmpty) {
@@ -237,7 +244,10 @@ class _RegisrationState extends State<Registration> {
                 TextFormField(
                   controller: emailcontrol,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.emailAddress,
 
                   validator: (emailValue) {
@@ -288,7 +298,8 @@ class _RegisrationState extends State<Registration> {
                 TextFormField(
                   controller: phonecontrol,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                  
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   maxLength: 10,
                   validator: (phonval) {
@@ -372,7 +383,7 @@ class _RegisrationState extends State<Registration> {
                 // TextFormField(
                 //   controller: latlngcontrol,
                 //   // ignore: deprecated_member_use
-                //   autovalidate: saveAttempt,
+                //   autovalidateMode: saveAttempt,
                 //   readOnly: true,
 
                 //   validator: (sValue) {
@@ -409,12 +420,15 @@ class _RegisrationState extends State<Registration> {
                 TextFormField(
                   controller: resiNocontrol,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
 
                   validator: (rValue) {
-                    // if (rValue.isEmpty) {
-                    //   return "Please enter your Street";
-                    // }
+                    if (rValue.isEmpty) {
+                      return "Fill your resident Nummber Ex: x-a40";
+                    }
                     return null;
                   },
                   decoration: InputDecoration(
@@ -448,7 +462,10 @@ class _RegisrationState extends State<Registration> {
                   controller: psswdcontrol,
                   obscureText: true,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   onChanged: (passwdValue) {
                     setState(() {
                       password = passwdValue;
@@ -456,9 +473,12 @@ class _RegisrationState extends State<Registration> {
                   },
                   validator: Validators.compose([
                     Validators.required('Password required'),
-                    Validators.patternString(
-                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~+]).{8,}$',
-                        'Invalid Password Format')
+                    // Validators.patternString(
+                    //     r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~+]).{8,}$',
+                    //     'Invalid Password Format')
+
+                            Validators.patternString(
+                        r'^.{6,}$', 'Should be atlest 6 character long'),
                   ]),
 
                   decoration: InputDecoration(
@@ -491,7 +511,10 @@ class _RegisrationState extends State<Registration> {
                 TextFormField(
                   obscureText: true,
                   // ignore: deprecated_member_use
-                  autovalidate: saveAttempt,
+                     inputFormatters: [
+                    FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
+                  ],
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   validator: (cPwdValue) {
                     if (cPwdValue != password) {
@@ -567,20 +590,23 @@ class _RegisrationState extends State<Registration> {
                       width: 50.0,
                     ),
                     InkWell(
-                      onTap: () {
+                      onTap: () async {
                         setState(() {
                           saveAttempt = true;
                         });
                         if (formkey.currentState.validate()) {
                           formkey.currentState.save();
 
-                          InsertMethod();
-
-                          Fluttertoast.showToast(
+                          await insertMethod().then((vale){
+                            Fluttertoast.showToast(
                               msg: "Registered",
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.CENTER,
                               textColor: Colors.black);
+
+                          });
+
+                          
                           // _register();
                           // _registered();
                         }

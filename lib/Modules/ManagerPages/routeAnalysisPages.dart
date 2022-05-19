@@ -43,14 +43,14 @@ class _MyNavigationBarState extends State<RouteAnalysis> {
             icon: Icon(Icons.done,
             color: Colors.green,
             ),  
-            title: Text('Completed'),  
+            label: 'Completed',  
             backgroundColor: Colors.white  
           ),  
           BottomNavigationBarItem(  
             icon: Icon(Icons.not_interested_rounded,
             color: Colors.red,
             ),  
-            title: Text('Incompleted'),  
+            label: 'Incompleted',  
             backgroundColor: Colors.white  
           ),  
          

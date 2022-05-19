@@ -40,12 +40,12 @@ class _MyNavigationBarState extends State<SendNotification> {
         items: const <BottomNavigationBarItem>[  
           BottomNavigationBarItem(  
             icon: Icon(Icons.payment),  
-            title: Text('Payment Notification'),  
+            label: 'Payment Notification',  
             backgroundColor: Colors.green  
           ),  
           BottomNavigationBarItem(  
             icon: Icon(Icons.cleaning_services),  
-            title: Text('Service Notification'),  
+            label: 'Service Notification',  
             backgroundColor: Colors.grey  
           ),  
          

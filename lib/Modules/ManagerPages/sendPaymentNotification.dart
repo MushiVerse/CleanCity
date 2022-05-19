@@ -166,7 +166,8 @@ class _RegisterUserState extends State<SendPaymentNotificationn> {
                 TextFormField(
                   // ignore: deprecated_member_use
                   controller: discription,
-                  autovalidate: saveAttempt,
+                  // autovalidate: saveAttempt,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
 
                   validator: (name) {
                     if (name.isEmpty) {

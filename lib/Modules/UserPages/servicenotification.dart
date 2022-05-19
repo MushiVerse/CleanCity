@@ -26,8 +26,8 @@ class _NotificationsState extends State<ServiceNotifications> {
     final responce = await http.get(Uri.parse(
         "https://mychoir2.000webhostapp.com/cityClean/getNotificationService.php"));
 
-    var dat = json.decode(responce.body);
-    return dat;
+    // var dat = json.decode(responce.body);
+    // return dat;
 
     // Showing Alert Dialog with Response JSON Message.
   }

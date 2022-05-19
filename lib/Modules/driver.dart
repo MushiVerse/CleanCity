@@ -18,8 +18,8 @@ class _NotificationsState extends State<Driver> {
     final responce = await http.get(Uri.parse(
         "https://mychoir2.000webhostapp.com/cityClean/getRegisterers.php"));
 
-    var dat = json.decode(responce.body);
-    return dat;
+    // var dat = json.decode(responce.body);
+    // return dat;
 
     // Showing Alert Dialog with Response JSON Message.
   }
@@ -124,7 +124,9 @@ class _NotificationsState extends State<Driver> {
             return Center(child: CircularProgressIndicator());
           } else {
             return ListView.builder(
-                itemCount: snap.data.length,
+                // itemCount: snap.data.length,
+                itemCount: 4,
+
                 itemBuilder: (context, i) {
                   return Card(
                     shadowColor: Colors.greenAccent,
@@ -141,19 +143,26 @@ class _NotificationsState extends State<Driver> {
                             maxRadius: 24,
                           ),
                           Text(
-                            snap.data[i]['street'],
+                            // snap.data[i]['street'],
+                            "not connectted to DB",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           
                         ],
                       ),
-                      subtitle: Text(snap.data[i]['lname']),
+                      subtitle: Text(
+                        "null"
+                        // snap.data[i]['lname']
+                        ),
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(snap.data[i]['email']),
+                            Text(
+                              // snap.data[i]['email']
+                              "email"
+                              ),
                           ],
                         ),
                         SizedBox(
@@ -186,7 +195,8 @@ class _NotificationsState extends State<Driver> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              snap.data[i]['time'],
+                              // snap.data[i]['time'],
+                              "time",
                               style: TextStyle(color: Colors.green),
                             )
                           ],
